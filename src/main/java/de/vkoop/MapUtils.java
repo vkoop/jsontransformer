@@ -8,7 +8,7 @@ public class MapUtils {
         Map<String, Object> result = new HashMap<>();
 
         for (String key : input.keySet()) {
-            final String[] keyFragments = key.split("_");
+            final String[] keyFragments = key.split("\\.");
             Map<String, Object> mapPointer = result;
 
             for (int i = 0; i < keyFragments.length; i++) {
@@ -40,7 +40,7 @@ public class MapUtils {
                 Map<String, Object> innerMap = flatten(nestedMap);
 
                 for (var nestedMapEntry : innerMap.entrySet()) {
-                    result.put(inputMapEntry.getKey() + "_" + nestedMapEntry.getKey(), nestedMapEntry.getValue());
+                    result.put(inputMapEntry.getKey() + "." + nestedMapEntry.getKey(), nestedMapEntry.getValue());
                 }
             } else {
                 result.put(inputMapEntry.getKey(), inputMapEntry.getValue());
